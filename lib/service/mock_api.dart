@@ -16,7 +16,8 @@ class MockApi {
         details: houseDetails[index],
         price: Random().nextInt(200) + 100,
         rating: Random().nextDouble() + 1 * 6,
-        imagePath: 'images/house${index + 1}.jpg',
+        imagePath: 'assets/images/house${index + 1}.jpg',
+        isLiked: false,
       ),
     );
   }
