@@ -64,7 +64,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 ),
               ),
               onPressed: () {
-                context.push(const Home());
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) {
+                  return const Home();
+                }));
               },
               child: Row(
                 children: [
