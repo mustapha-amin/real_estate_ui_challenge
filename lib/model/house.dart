@@ -4,6 +4,7 @@ class House {
   double? rating;
   int? price;
   String? imagePath;
+  bool? isLiked;
 
   House({
     this.address,
@@ -11,5 +12,6 @@ class House {
     this.price,
     this.rating,
     this.imagePath,
+    this.isLiked,
   });
 }
