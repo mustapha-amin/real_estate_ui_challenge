@@ -26,7 +26,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               style: kTextStyle(
                 30,
                 color: Colors.lightBlueAccent,
-                fontWeight: FontWeight.bold,
+                isBold: true,
               ),
               children: [
                 TextSpan(
@@ -34,14 +34,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   style: kTextStyle(
                     30,
                     color: Colors.amber,
-                    fontWeight: FontWeight.bold,
+                    isBold: true,
                   ),
                 ),
                 TextSpan(
                   text: "elegant house this \nis the place",
                   style: kTextStyle(
                     30,
-                    fontWeight: FontWeight.bold,
+                    isBold: true,
                   ),
                 )
               ],

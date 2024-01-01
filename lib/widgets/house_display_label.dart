@@ -20,7 +20,7 @@ class HouseDisplayLabel extends StatelessWidget {
               style: kTextStyle(
                 15,
                 color: Colors.white,
-                fontWeight: FontWeight.bold,
+                isBold: true,
               ),
             ),
             Container(
@@ -53,7 +53,7 @@ class HouseDisplayLabel extends StatelessWidget {
               style: kTextStyle(
                 15,
                 color: Colors.white,
-                fontWeight: FontWeight.bold,
+                isBold: true,
               ),
             ),
             Text(
@@ -61,7 +61,7 @@ class HouseDisplayLabel extends StatelessWidget {
               style: kTextStyle(
                 15,
                 color: Colors.white,
-                fontWeight: FontWeight.bold,
+                isBold: true,
               ),
             )
           ],

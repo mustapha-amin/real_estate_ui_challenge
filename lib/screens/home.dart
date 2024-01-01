@@ -77,7 +77,7 @@ class _HomeState extends State<Home> {
                               style: kTextStyle(
                                 18,
                                 color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                                isBold: true,
                               ),
                             ),
                             Row(
@@ -88,7 +88,7 @@ class _HomeState extends State<Home> {
                                   style: kTextStyle(
                                     15,
                                     color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+                                    isBold: true,
                                   ),
                                 ),
                                 Text(
@@ -96,7 +96,7 @@ class _HomeState extends State<Home> {
                                   style: kTextStyle(
                                     15,
                                     color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+                                    isBold: true,
                                   ),
                                 ),
                               ],
@@ -113,7 +113,7 @@ class _HomeState extends State<Home> {
                         height: 20,
                         child: Text(
                           "Popular today",
-                          style: kTextStyle(20, fontWeight: FontWeight.bold),
+                          style: kTextStyle(20, isBold: true),
                         ),
                       ).padX(15),
                       ...remainingHouses.map(
@@ -126,9 +126,9 @@ class _HomeState extends State<Home> {
                     ],
                   ).padY(10),
                 );
+              } else {
+                return const CircularProgressIndicator.adaptive();
               }
-
-              return const CircularProgressIndicator.adaptive();
             },
           ),
         ],

@@ -19,7 +19,7 @@ class EstateAppBarTitle extends StatelessWidget {
             style: kTextStyle(
               25,
               color: Colors.lightBlueAccent,
-              fontWeight: FontWeight.bold,
+              isBold: true,
             ),
             children: [
               TextSpan(
@@ -27,7 +27,7 @@ class EstateAppBarTitle extends StatelessWidget {
                 style: kTextStyle(
                   25,
                   color: Colors.amber,
-                  fontWeight: FontWeight.bold,
+                  isBold: true,
                 ),
               ),
             ],

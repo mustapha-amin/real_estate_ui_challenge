@@ -12,7 +12,7 @@ class MockApi {
     return List.generate(
       10,
       (index) => House(
-        address: "${streets[index]}, ${cities[index]}",
+        address: "${streets[index]}, \n${cities[index]}",
         details: houseDetails[index],
         price: Random().nextInt(200) + 100,
         rating: Random().nextDouble() + 1 * 6,
