@@ -5,6 +5,7 @@ import 'package:real_estate_ui_challenge/utils/textstyle.dart';
 import 'package:real_estate_ui_challenge/widgets/estate_app_bar.dart';
 import 'package:real_estate_ui_challenge/widgets/house_display.dart';
 import 'package:real_estate_ui_challenge/widgets/house_display_label.dart';
+import 'package:sizer/sizer.dart';
 import '/model/house.dart';
 
 class Home extends StatefulWidget {
@@ -47,8 +48,14 @@ class _HomeState extends State<Home> {
               return ListView(
                 children: [
                   SizedBox(
-                    height: context.screenHeight * .08,
+                    height: 7.h,
                     child: SearchBar(
+                      padding: const MaterialStatePropertyAll(
+                        EdgeInsets.symmetric(
+                          vertical: 6,
+                          horizontal: 10,
+                        ),
+                      ),
                       elevation: const MaterialStatePropertyAll(1),
                       hintText: "Search here",
                       hintStyle: MaterialStatePropertyAll(
@@ -107,7 +114,7 @@ class _HomeState extends State<Home> {
                     child: HouseDisplayLabel(house: secondHouse),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 30,
                     child: Text(
                       "Popular today",
                       style: kTextStyle(20, isBold: true),

@@ -6,6 +6,7 @@ import 'package:real_estate_ui_challenge/model/house.dart';
 import 'package:real_estate_ui_challenge/utils/extensions.dart';
 import 'package:real_estate_ui_challenge/utils/textstyle.dart';
 import 'package:real_estate_ui_challenge/widgets/more_images.dart';
+import 'package:sizer/sizer.dart';
 
 // ignore: must_be_immutable
 class DetailScreen extends StatefulWidget {
@@ -168,7 +169,7 @@ class _DetailScreenState extends State<DetailScreen> {
             ),
           ),
           SizedBox(
-            height: context.screenHeight * .13,
+            height: 10.h,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
