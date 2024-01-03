@@ -117,9 +117,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             ),
           ),
           Expanded(
-            child: Image.asset(
-              "assets/images/house.png",
-              width: context.screenWidth,
+            child: AnimatedOpacity(
+              opacity: isAnimating ? 1 : 0,
+              duration: const Duration(seconds: 2),
+                  curve: Curves.fastOutSlowIn,
+              child: Image.asset(
+                "assets/images/house.png",
+                width: context.screenWidth,
+              ),
             ),
           )
         ],
