@@ -138,7 +138,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                 .split(' ')
                                 .sublist(0, lastWord)
                                 .join(' '),
-                            style: kTextStyle(13, color: Colors.grey),
+                            style: kTextStyle(13, color: Colors.grey[400]),
                             children: [
                               TextSpan(
                                   text:
@@ -169,35 +169,34 @@ class _DetailScreenState extends State<DetailScreen> {
             ),
           ),
           SizedBox(
-            height: 10.h,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text.rich(
-                  TextSpan(
-                    text: "Price\n",
-                    style: kTextStyle(15),
-                    children: [
-                      TextSpan(
-                        text: "\$${widget.house!.price}",
-                        style: kTextStyle(20, isBold: true),
-                      ),
-                    ],
+              height: 10.h,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text.rich(
+                    TextSpan(
+                      text: "Price\n",
+                      style: kTextStyle(15),
+                      children: [
+                        TextSpan(
+                          text: "\$${widget.house!.price}",
+                          style: kTextStyle(20, isBold: true),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.lightBlueAccent,
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.lightBlueAccent,
+                    ),
+                    onPressed: () {},
+                    child: Text(
+                      "Pay now",
+                      style: kTextStyle(15, color: Colors.white, isBold: true),
+                    ),
                   ),
-                  onPressed: () {},
-                  child: Text(
-                    "Pay now",
-                    style: kTextStyle(15, color: Colors.white, isBold: true),
-                  ),
-                )
-              ],
-            ).padX(15),
-          )
+                ],
+              ).padX(15))
         ],
       ),
     );
