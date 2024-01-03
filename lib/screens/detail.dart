@@ -69,7 +69,7 @@ class _DetailScreenState extends State<DetailScreen> {
                     ),
                     Positioned(
                       left: 7,
-                      top: 7,
+                      top: 20,
                       child: IconButton.filledTonal(
                         onPressed: () {
                           Navigator.pop(context);
@@ -138,7 +138,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                 .split(' ')
                                 .sublist(0, lastWord)
                                 .join(' '),
-                            style: kTextStyle(13, color: Colors.grey[400]),
+                            style: kTextStyle(13, color: Colors.grey[500]),
                             children: [
                               TextSpan(
                                   text:
@@ -160,6 +160,25 @@ class _DetailScreenState extends State<DetailScreen> {
                                     })
                             ],
                           ),
+                        )
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.asset(
+                            "assets/images/map.jpg",
+                            width: double.infinity,
+                            height: 60.h,
+                          ),
+                        ),
+                        const Icon(
+                          Icons.location_on,
+                          color: Colors.red,
+                          size: 40,
                         )
                       ],
                     ),
