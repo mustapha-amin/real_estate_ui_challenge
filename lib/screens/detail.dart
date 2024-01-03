@@ -20,9 +20,9 @@ class _DetailScreenState extends State<DetailScreen> {
   int? lastWord;
   bool isExpanded = false;
   bool isTapped = false;
-  int index1 = Random().nextInt(11) + 1;
-  int index2 = Random().nextInt(11) + 1;
-  int index3 = Random().nextInt(11) + 1;
+  int index1 = Random().nextInt(10) + 1;
+  int index2 = Random().nextInt(10) + 1;
+  int index3 = Random().nextInt(10) + 1;
 
   @override
   void initState() {
