@@ -5,6 +5,6 @@ kTextStyle(double fontSize, {Color? color, bool? isBold = false}) {
     fontSize: fontSize,
     color: color ?? Colors.black,
     fontWeight: isBold! ? FontWeight.w700 : FontWeight.normal,
-    fontFamily: "Montserrat",
+    fontFamily: "Lato",
   );
 }

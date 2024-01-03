@@ -18,7 +18,7 @@ class HouseDisplayLabel extends StatelessWidget {
             Text(
               house.address!,
               style: kTextStyle(
-                15,
+                20,
                 color: Colors.white,
                 isBold: true,
               ),
@@ -28,12 +28,13 @@ class HouseDisplayLabel extends StatelessWidget {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
+              padding: const EdgeInsets.all(3),
               child: Row(
                 children: [
                   const Icon(
                     Icons.star,
                     color: Colors.amber,
-                    size: 18,
+                    size: 15,
                   ),
                   Text(
                     house.rating!.toStringAsFixed(1),
@@ -53,7 +54,6 @@ class HouseDisplayLabel extends StatelessWidget {
               style: kTextStyle(
                 15,
                 color: Colors.white,
-                isBold: true,
               ),
             ),
             Text(
@@ -61,7 +61,6 @@ class HouseDisplayLabel extends StatelessWidget {
               style: kTextStyle(
                 15,
                 color: Colors.white,
-                isBold: true,
               ),
             )
           ],

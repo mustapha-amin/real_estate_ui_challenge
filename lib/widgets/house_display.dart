@@ -5,7 +5,7 @@ import 'package:real_estate_ui_challenge/model/house.dart';
 import 'package:real_estate_ui_challenge/screens/detail.dart';
 import 'package:real_estate_ui_challenge/utils/extensions.dart';
 
-class HouseDisplay extends StatelessWidget {
+class HouseDisplay extends StatefulWidget {
   final House house;
   final double height;
   final Widget child;
@@ -17,12 +17,23 @@ class HouseDisplay extends StatelessWidget {
   });
 
   @override
+  State<HouseDisplay> createState() => _HouseDisplayState();
+}
+
+class _HouseDisplayState extends State<HouseDisplay> {
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    precacheImage(AssetImage(widget.house.imagePath!), context);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(15),
       onTap: () => context.push(
         DetailScreen(
-          house: house,
+          house: widget.house,
         ),
       ),
       child: Stack(
@@ -31,10 +42,12 @@ class HouseDisplay extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(15),
             child: Image.asset(
-              house.imagePath!,
+              widget.house.imagePath!,
               width: double.infinity,
-              height: height,
+              height: widget.height,
               fit: BoxFit.cover,
+              color: Colors.black.withOpacity(0.6),
+              colorBlendMode: BlendMode.overlay,
             ),
           ),
           ClipRRect(
@@ -51,7 +64,7 @@ class HouseDisplay extends StatelessWidget {
               ),
             ),
           ),
-          child,
+          widget.child,
         ],
       ).padAll(15),
     );

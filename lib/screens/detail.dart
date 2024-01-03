@@ -14,13 +14,33 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
-  int? lastChar;
+  int? lastWord;
   bool isExpanded = false;
+  bool isTapped = false;
 
   @override
   void initState() {
     super.initState();
-    lastChar = 15;
+    lastWord = 15;
+  }
+
+  Icon? ratingIcon(int index) {
+    if (index < widget.house!.rating!) {
+      return const Icon(
+        Icons.star,
+        color: Colors.amber,
+      );
+    } else if (index - widget.house!.rating! < 0.8) {
+      return const Icon(
+        Icons.star_half,
+        color: Colors.amber,
+      );
+    } else {
+      return Icon(
+        Icons.star_border,
+        color: Colors.amber[200]!,
+      );
+    }
   }
 
   @override
@@ -33,19 +53,34 @@ class _DetailScreenState extends State<DetailScreen> {
               child: ListView(
                 children: [
                   Stack(
+                    alignment: Alignment.topLeft,
                     children: [
                       Image.asset(
                         widget.house!.imagePath!,
                         height: context.screenHeight * .5,
                         width: context.screenWidth,
-                        filterQuality: FilterQuality.high,
                         fit: BoxFit.cover,
                       ),
+                      Positioned(
+                        left: 7,
+                        top: 7,
+                        child: IconButton.filledTonal(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(Icons.arrow_back),
+                        ),
+                      )
                     ],
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Row(
+                        children: [
+                          for (int i = 0; i < 5; i++) ratingIcon(i + 1)!,
+                        ],
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -53,27 +88,36 @@ class _DetailScreenState extends State<DetailScreen> {
                             widget.house!.address!,
                             style: kTextStyle(25, isBold: true),
                           ),
-                          IconButton(
-                            onPressed: () {
-                              setState(() {
-                                widget.house!.isLiked = !widget.house!.isLiked!;
-                              });
-                            },
-                            icon: Icon(
-                              widget.house!.isLiked!
-                                  ? Icons.favorite
-                                  : Icons.favorite_border,
-                              color: widget.house!.isLiked!
-                                  ? Colors.red
-                                  : Colors.black,
-                              size: 30,
+                          AnimatedScale(
+                            scale: isTapped ? 1.5 : 1,
+                            duration: const Duration(milliseconds: 200),
+                            child: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  widget.house!.isLiked =
+                                      !widget.house!.isLiked!;
+                                  isTapped = true;
+                                  Future.delayed(
+                                      const Duration(milliseconds: 200),
+                                      () => setState(() => isTapped = false));
+                                });
+                              },
+                              icon: Icon(
+                                widget.house!.isLiked!
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                color: widget.house!.isLiked!
+                                    ? Colors.red
+                                    : Colors.black,
+                                size: 30,
+                              ),
                             ),
                           )
                         ],
                       ),
                       Text(
                         "Description",
-                        style: kTextStyle(15, isBold: true),
+                        style: kTextStyle(17, isBold: true),
                       ).padY(10),
                       Wrap(
                         alignment: WrapAlignment.start,
@@ -83,7 +127,7 @@ class _DetailScreenState extends State<DetailScreen> {
                             text: TextSpan(
                               text: widget.house!.details!
                                   .split(' ')
-                                  .sublist(0, lastChar)
+                                  .sublist(0, lastWord)
                                   .join(' '),
                               style: kTextStyle(13, color: Colors.grey),
                               children: [
@@ -98,7 +142,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                     recognizer: TapGestureRecognizer()
                                       ..onTap = () {
                                         setState(() {
-                                          lastChar = !isExpanded
+                                          lastWord = !isExpanded
                                               ? widget.house!.details!
                                                   .split(' ')
                                                   .length

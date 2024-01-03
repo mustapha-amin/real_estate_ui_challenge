@@ -15,7 +15,7 @@ class EstateAppBarTitle extends StatelessWidget {
         ),
         Text.rich(
           TextSpan(
-            text: "Home",
+            text: " Home",
             style: kTextStyle(
               25,
               color: Colors.lightBlueAccent,
