@@ -1,8 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:real_estate_ui_challenge/model/house.dart';
 import 'package:real_estate_ui_challenge/utils/extensions.dart';
 import 'package:real_estate_ui_challenge/utils/textstyle.dart';
+import 'package:real_estate_ui_challenge/widgets/more_images.dart';
 
 // ignore: must_be_immutable
 class DetailScreen extends StatefulWidget {
@@ -17,6 +20,9 @@ class _DetailScreenState extends State<DetailScreen> {
   int? lastWord;
   bool isExpanded = false;
   bool isTapped = false;
+  int index1 = Random().nextInt(11) + 1;
+  int index2 = Random().nextInt(11) + 1;
+  int index3 = Random().nextInt(11) + 1;
 
   @override
   void initState() {
@@ -69,6 +75,9 @@ class _DetailScreenState extends State<DetailScreen> {
                         },
                         icon: const Icon(Icons.arrow_back),
                       ),
+                    ),
+                    MoreImages(
+                      moreImagesIndices: [index1, index2, index3],
                     )
                   ],
                 ),
