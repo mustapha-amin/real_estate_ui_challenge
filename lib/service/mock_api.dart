@@ -15,7 +15,7 @@ class MockApi {
         address: "${streets[index]}, \n${cities[index]}",
         details: houseDetails[index],
         price: Random().nextInt(200) + 100,
-        rating: 1 + Random().nextDouble() * 5,
+        rating: 1 + Random().nextDouble() * 4,
         imagePath: 'assets/images/house${index + 1}.jpg',
         isLiked: false,
       ),

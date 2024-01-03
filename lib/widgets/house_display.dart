@@ -20,19 +20,9 @@ class HouseDisplay extends StatefulWidget {
   State<HouseDisplay> createState() => _HouseDisplayState();
 }
 
-class _HouseDisplayState extends State<HouseDisplay>
-    with AutomaticKeepAliveClientMixin {
-  @override
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    precacheImage(AssetImage(widget.house.imagePath!), context);
-  }
-
+class _HouseDisplayState extends State<HouseDisplay> {
   @override
   Widget build(BuildContext context) {
-    super.build(context);
     return InkWell(
       borderRadius: BorderRadius.circular(15),
       onTap: () => context.push(
@@ -73,7 +63,4 @@ class _HouseDisplayState extends State<HouseDisplay>
       ).padAll(15),
     );
   }
-
-  @override
-  bool get wantKeepAlive => true;
 }

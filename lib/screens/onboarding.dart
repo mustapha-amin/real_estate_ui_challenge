@@ -18,7 +18,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   void initState() {
     super.initState();
     Future.delayed(
-        const Duration(seconds: 2),
+        const Duration(seconds: 1),
         () => setState(() {
               isAnimating = !isAnimating;
             }));
@@ -67,7 +67,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           const SizedBox(height: 15),
           AnimatedOpacity(
             opacity: isAnimating ? 1 : 0,
-            duration: const Duration(seconds: 4),
+            duration: const Duration(seconds: 2),
             curve: Curves.fastOutSlowIn,
             child: Text(
               "Welcome friends, are you looking \nfor us?\n\nCongratulations you have found us",

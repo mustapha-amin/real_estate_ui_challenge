@@ -121,7 +121,7 @@ class _HomeState extends State<Home> {
                     ),
                   )
                 ],
-              ).padY(10);
+              );
             } else {
               return const CircularProgressIndicator.adaptive();
             }

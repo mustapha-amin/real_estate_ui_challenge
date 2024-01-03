@@ -75,6 +75,7 @@ class _DetailScreenState extends State<DetailScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    const SizedBox(height: 10),
                     Row(
                       children: [
                         for (int i = 0; i < 5; i++) ratingIcon(i + 1)!,
