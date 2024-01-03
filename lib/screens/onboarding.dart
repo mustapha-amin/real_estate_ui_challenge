@@ -34,7 +34,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           const SizedBox(height: 25),
           AnimatedOpacity(
             opacity: isAnimating ? 1 : 0,
-            duration: const Duration(seconds: 2),
+            duration: const Duration(seconds: 3),
             curve: Curves.fastOutSlowIn,
             child: Text.rich(
               TextSpan(
@@ -67,7 +67,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           const SizedBox(height: 15),
           AnimatedOpacity(
             opacity: isAnimating ? 1 : 0,
-            duration: const Duration(seconds: 2),
+            duration: const Duration(seconds: 4),
             curve: Curves.fastOutSlowIn,
             child: Text(
               "Welcome friends, are you looking \nfor us?\n\nCongratulations you have found us",
@@ -90,11 +90,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     ),
                   ),
                   onPressed: () {
-                    context.push(Home());
-                    // Navigator.pushReplacement(context,
-                    //     MaterialPageRoute(builder: (context) {
-                    //   return const Home();
-                    // }));
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) {
+                      return const Home();
+                    }));
                   },
                   child: Row(
                     children: [

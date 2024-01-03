@@ -86,7 +86,7 @@ class _DetailScreenState extends State<DetailScreen> {
                         children: [
                           Text(
                             widget.house!.address!,
-                            style: kTextStyle(25, isBold: true),
+                            style: kTextStyle(23, isBold: true),
                           ),
                           AnimatedScale(
                             scale: isTapped ? 1.5 : 1,

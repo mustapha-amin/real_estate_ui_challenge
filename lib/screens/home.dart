@@ -44,87 +44,84 @@ class _HomeState extends State<Home> {
               House? secondHouse = snapshot.data![1];
               List<House> remainingHouses =
                   snapshot.data!.sublist(0, snapshot.data!.length);
-              return SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: context.screenHeight * .08,
-                      child: SearchBar(
-                        elevation: const MaterialStatePropertyAll(1),
-                        hintText: "Search here",
-                        hintStyle: MaterialStatePropertyAll(
-                          kTextStyle(16, color: Colors.grey),
+              return ListView(
+                children: [
+                  SizedBox(
+                    height: context.screenHeight * .08,
+                    child: SearchBar(
+                      elevation: const MaterialStatePropertyAll(1),
+                      hintText: "Search here",
+                      hintStyle: MaterialStatePropertyAll(
+                        kTextStyle(16, color: Colors.grey),
+                      ),
+                      trailing: const [
+                        Icon(
+                          Icons.search,
+                          color: Colors.grey,
                         ),
-                        trailing: const [
-                          Icon(
-                            Icons.search,
-                            color: Colors.grey,
+                      ],
+                    ).padX(10),
+                  ),
+                  HouseDisplay(
+                    house: firstHouse,
+                    height: context.screenHeight * .2,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Let's buy a house\nhere",
+                          style: kTextStyle(
+                            18,
+                            color: Colors.white,
+                            isBold: true,
                           ),
-                        ],
-                      ).padX(10),
-                    ),
-                    HouseDisplay(
-                      house: firstHouse,
-                      height: context.screenHeight * .2,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Let's buy a house\nhere",
-                            style: kTextStyle(
-                              18,
-                              color: Colors.white,
-                              isBold: true,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Disount 10%",
+                              style: kTextStyle(
+                                15,
+                                color: Colors.white,
+                                isBold: true,
+                              ),
                             ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Disount 10%",
-                                style: kTextStyle(
-                                  15,
-                                  color: Colors.white,
-                                  isBold: true,
-                                ),
+                            Text(
+                              "1 January 2024",
+                              style: kTextStyle(
+                                15,
+                                color: Colors.white,
+                                isBold: true,
                               ),
-                              Text(
-                                "1 January 2024",
-                                style: kTextStyle(
-                                  15,
-                                  color: Colors.white,
-                                  isBold: true,
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
-                      ).padAll(15),
+                            ),
+                          ],
+                        )
+                      ],
+                    ).padAll(15),
+                  ),
+                  HouseDisplay(
+                    house: secondHouse,
+                    height: context.screenHeight * .28,
+                    child: HouseDisplayLabel(house: secondHouse),
+                  ),
+                  SizedBox(
+                    height: 20,
+                    child: Text(
+                      "Popular today",
+                      style: kTextStyle(20, isBold: true),
                     ),
-                    HouseDisplay(
-                      house: secondHouse,
+                  ).padX(15),
+                  ...remainingHouses.map(
+                    (house) => HouseDisplay(
+                      house: house,
                       height: context.screenHeight * .28,
-                      child: HouseDisplayLabel(house: secondHouse),
+                      child: HouseDisplayLabel(house: house),
                     ),
-                    SizedBox(
-                      height: 20,
-                      child: Text(
-                        "Popular today",
-                        style: kTextStyle(20, isBold: true),
-                      ),
-                    ).padX(15),
-                    ...remainingHouses.map(
-                      (house) => HouseDisplay(
-                        house: house,
-                        height: context.screenHeight * .28,
-                        child: HouseDisplayLabel(house: house),
-                      ),
-                    )
-                  ],
-                ).padY(10),
-              );
+                  )
+                ],
+              ).padY(10);
             } else {
               return const CircularProgressIndicator.adaptive();
             }
