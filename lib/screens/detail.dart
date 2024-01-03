@@ -45,153 +45,149 @@ class _DetailScreenState extends State<DetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
-          children: [
-            Expanded(
-              child: ListView(
-                children: [
-                  Stack(
-                    alignment: Alignment.topLeft,
-                    children: [
-                      Image.asset(
-                        widget.house!.imagePath!,
-                        height: context.screenHeight * .5,
-                        width: context.screenWidth,
-                        fit: BoxFit.cover,
+    return Scaffold(
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView(
+              children: [
+                Stack(
+                  alignment: Alignment.topLeft,
+                  children: [
+                    Image.asset(
+                      widget.house!.imagePath!,
+                      height: context.screenHeight * .5,
+                      width: context.screenWidth,
+                      fit: BoxFit.cover,
+                    ),
+                    Positioned(
+                      left: 7,
+                      top: 7,
+                      child: IconButton.filledTonal(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(Icons.arrow_back),
                       ),
-                      Positioned(
-                        left: 7,
-                        top: 7,
-                        child: IconButton.filledTonal(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: const Icon(Icons.arrow_back),
-                        ),
-                      )
-                    ],
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          for (int i = 0; i < 5; i++) ratingIcon(i + 1)!,
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            widget.house!.address!,
-                            style: kTextStyle(23, isBold: true),
-                          ),
-                          AnimatedScale(
-                            scale: isTapped ? 1.5 : 1,
-                            duration: const Duration(milliseconds: 200),
-                            child: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  widget.house!.isLiked =
-                                      !widget.house!.isLiked!;
-                                  isTapped = true;
-                                  Future.delayed(
-                                      const Duration(milliseconds: 200),
-                                      () => setState(() => isTapped = false));
-                                });
-                              },
-                              icon: Icon(
-                                widget.house!.isLiked!
-                                    ? Icons.favorite
-                                    : Icons.favorite_border,
-                                color: widget.house!.isLiked!
-                                    ? Colors.red
-                                    : Colors.black,
-                                size: 30,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                      Text(
-                        "Description",
-                        style: kTextStyle(17, isBold: true),
-                      ).padY(10),
-                      Wrap(
-                        alignment: WrapAlignment.start,
-                        runAlignment: WrapAlignment.center,
-                        children: [
-                          RichText(
-                            text: TextSpan(
-                              text: widget.house!.details!
-                                  .split(' ')
-                                  .sublist(0, lastWord)
-                                  .join(' '),
-                              style: kTextStyle(13, color: Colors.grey),
-                              children: [
-                                TextSpan(
-                                    text: isExpanded
-                                        ? " Read less"
-                                        : " Read more",
-                                    style: kTextStyle(
-                                      13,
-                                      color: Colors.lightBlueAccent,
-                                    ),
-                                    recognizer: TapGestureRecognizer()
-                                      ..onTap = () {
-                                        setState(() {
-                                          lastWord = !isExpanded
-                                              ? widget.house!.details!
-                                                  .split(' ')
-                                                  .length
-                                              : 15;
-                                          isExpanded = !isExpanded;
-                                        });
-                                      })
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ).padX(15),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: context.screenHeight * .13,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text.rich(
-                    TextSpan(
-                      text: "Price\n",
-                      style: kTextStyle(15),
+                    )
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
                       children: [
-                        TextSpan(
-                          text: "\$${widget.house!.price}",
-                          style: kTextStyle(20, isBold: true),
-                        ),
+                        for (int i = 0; i < 5; i++) ratingIcon(i + 1)!,
                       ],
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          widget.house!.address!,
+                          style: kTextStyle(23, isBold: true),
+                        ),
+                        AnimatedScale(
+                          scale: isTapped ? 1.5 : 1,
+                          duration: const Duration(milliseconds: 200),
+                          child: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                widget.house!.isLiked = !widget.house!.isLiked!;
+                                isTapped = true;
+                                Future.delayed(
+                                    const Duration(milliseconds: 200),
+                                    () => setState(() => isTapped = false));
+                              });
+                            },
+                            icon: Icon(
+                              widget.house!.isLiked!
+                                  ? Icons.favorite
+                                  : Icons.favorite_border,
+                              color: widget.house!.isLiked!
+                                  ? Colors.red
+                                  : Colors.black,
+                              size: 30,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    Text(
+                      "Description",
+                      style: kTextStyle(17, isBold: true),
+                    ).padY(10),
+                    Wrap(
+                      alignment: WrapAlignment.start,
+                      runAlignment: WrapAlignment.center,
+                      children: [
+                        RichText(
+                          text: TextSpan(
+                            text: widget.house!.details!
+                                .split(' ')
+                                .sublist(0, lastWord)
+                                .join(' '),
+                            style: kTextStyle(13, color: Colors.grey),
+                            children: [
+                              TextSpan(
+                                  text:
+                                      isExpanded ? " Read less" : " Read more",
+                                  style: kTextStyle(
+                                    13,
+                                    color: Colors.lightBlueAccent,
+                                  ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      setState(() {
+                                        lastWord = !isExpanded
+                                            ? widget.house!.details!
+                                                .split(' ')
+                                                .length
+                                            : 15;
+                                        isExpanded = !isExpanded;
+                                      });
+                                    })
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ).padX(15),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: context.screenHeight * .13,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text.rich(
+                  TextSpan(
+                    text: "Price\n",
+                    style: kTextStyle(15),
+                    children: [
+                      TextSpan(
+                        text: "\$${widget.house!.price}",
+                        style: kTextStyle(20, isBold: true),
+                      ),
+                    ],
                   ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.lightBlueAccent,
-                    ),
-                    onPressed: () {},
-                    child: Text(
-                      "Pay now",
-                      style: kTextStyle(15, color: Colors.white, isBold: true),
-                    ),
-                  )
-                ],
-              ).padX(15),
-            )
-          ],
-        ),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.lightBlueAccent,
+                  ),
+                  onPressed: () {},
+                  child: Text(
+                    "Pay now",
+                    style: kTextStyle(15, color: Colors.white, isBold: true),
+                  ),
+                )
+              ],
+            ).padX(15),
+          )
+        ],
       ),
     );
   }
