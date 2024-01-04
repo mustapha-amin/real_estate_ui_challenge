@@ -3,4 +3,4 @@
 Screen recording
 
 
-![qs1azEGJ3W](https://github.com/mustapha-amin/real_estate_ui_challenge/assets/70119794/4f930d5a-3190-4bdd-9eec-7bdc39aee08b)
+![explorer_tMByyN1uGD](https://github.com/mustapha-amin/real_estate_ui_challenge/assets/70119794/b965091f-654d-49f7-a927-c274c083bf24)
