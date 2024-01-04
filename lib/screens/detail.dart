@@ -64,11 +64,11 @@ class _DetailScreenState extends State<DetailScreen> {
                     Hero(
                       tag: widget.house!.imagePath!,
                       child: Image.asset(
-                      widget.house!.imagePath!,
-                      height: context.screenHeight * .5,
-                      width: context.screenWidth,
-                      fit: BoxFit.cover,
-                    ),
+                        widget.house!.imagePath!,
+                        height: context.screenHeight * .5,
+                        width: context.screenWidth,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                     Positioned(
                       left: 7,
@@ -105,6 +105,8 @@ class _DetailScreenState extends State<DetailScreen> {
                           scale: isTapped ? 1.5 : 1,
                           duration: const Duration(milliseconds: 200),
                           child: IconButton(
+                            splashColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
                             onPressed: () {
                               setState(() {
                                 widget.house!.isLiked = !widget.house!.isLiked!;
