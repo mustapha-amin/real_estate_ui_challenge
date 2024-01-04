@@ -32,7 +32,7 @@ class _DetailScreenState extends State<DetailScreen> {
   }
 
   Icon? ratingIcon(int index) {
-    if (index < widget.house!.rating!) {
+    if (index < widget.house!.rating! || index == widget.house!.rating) {
       return const Icon(
         Icons.star,
         color: Colors.amber,
@@ -61,11 +61,14 @@ class _DetailScreenState extends State<DetailScreen> {
                 Stack(
                   alignment: Alignment.topLeft,
                   children: [
-                    Image.asset(
+                    Hero(
+                      tag: widget.house!.imagePath!,
+                      child: Image.asset(
                       widget.house!.imagePath!,
                       height: context.screenHeight * .5,
                       width: context.screenWidth,
                       fit: BoxFit.cover,
+                    ),
                     ),
                     Positioned(
                       left: 7,
