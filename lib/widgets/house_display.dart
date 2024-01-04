@@ -35,13 +35,16 @@ class _HouseDisplayState extends State<HouseDisplay> {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(15),
-            child: Image.asset(
+            child: Hero(
+              tag: widget.house.imagePath!,
+              child: Image.asset(
               widget.house.imagePath!,
               width: double.infinity,
               height: widget.height,
               fit: BoxFit.cover,
               color: Colors.black.withOpacity(0.6),
               colorBlendMode: BlendMode.overlay,
+            ),
             ),
           ),
           ClipRRect(

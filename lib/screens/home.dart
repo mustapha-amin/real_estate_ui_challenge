@@ -44,7 +44,7 @@ class _HomeState extends State<Home> {
               House? firstHouse = snapshot.data![0];
               House? secondHouse = snapshot.data![1];
               List<House> remainingHouses =
-                  snapshot.data!.sublist(0, snapshot.data!.length);
+                  snapshot.data!.sublist(2, snapshot.data!.length);
               return ListView(
                 children: [
                   SizedBox(

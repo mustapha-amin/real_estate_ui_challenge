@@ -20,7 +20,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   void initState() {
     super.initState();
     Future.delayed(
-        const Duration(seconds: 1),
+        const Duration(milliseconds: 900),
         () => setState(() {
               isAnimating = !isAnimating;
             }));
@@ -119,7 +119,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           Expanded(
             child: AnimatedOpacity(
               opacity: isAnimating ? 1 : 0,
-              duration: const Duration(seconds: 2),
+              duration: const Duration(seconds: 1),
                   curve: Curves.fastOutSlowIn,
               child: Image.asset(
                 "assets/images/house.png",
